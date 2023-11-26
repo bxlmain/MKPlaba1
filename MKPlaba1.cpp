@@ -3,10 +3,11 @@
 #include <fstream>
 #include <cmath>
 #include <cstdlib> 
+#include <string> 
+#include <ctime> 
 
 using namespace std;
 //обозначим нужные нам константы
-const long double Pi = 3.14159265358;
 const double e = 0.8276646992;
 const double eps = 0.0001;
 
@@ -69,8 +70,7 @@ double NTMethod(double dif, double E, double M) { //метод Ньютона
     }
 }
 
-int main()
-{
+int main() {
     ofstream outputFile;
     ifstream inputFile;
     outputFile.open("IterationMethod.txt");
@@ -78,9 +78,9 @@ int main()
   
         for (int i = 0; i <= 360; i++)
         {
-            double E1 = e * sin(i * 2 * Pi / 360) + (i * 2 * Pi / 360);
-            double E0 = i * 2 * Pi / 360;
-            outputFile << HalfDivisionMethod(E1, E0, i * 2 * Pi / 360) << endl;
+            double E1 = e * sin(i * 2 * M_PI / 360) + (i * 2 * M_PI / 360);
+            double E0 = i * 2 * M_PI / 360;
+            outputFile << HalfDivisionMethod(E1, E0, i * 2 * M_PI / 360) << endl;
         }
     }
     else {
@@ -110,7 +110,7 @@ int main()
     if (outputFile.is_open()) {
         for (int i = 0; i <= 360; i++)
         {
-            outputFile << HalfDivisionMethod((i - 10) * 2 * Pi / 360, (i + 10) * 2 * Pi / 360, i * 2 * Pi / 360) << endl;
+            outputFile << HalfDivisionMethod((i - 10) * 2 * M_PI / 360, (i + 10) * 2 * M_PI / 360, i * 2 * M_PI / 360) << endl;
         }
     }
     else {
@@ -140,7 +140,7 @@ int main()
     if (outputFile.is_open()) {
         for (int i = 0; i <= 360; i++)
         {
-            outputFile << GoldenRatioMethod((i - 10) * 2 * Pi / 360, (i + 10) * 2 * Pi / 360, (pow(5, 0.5) + 1) / 2, i * 2 * Pi / 360) << endl;
+            outputFile << GoldenRatioMethod((i - 10) * 2 * M_PI / 360, (i + 10) * 2 * M_PI / 360, (pow(5, 0.5) + 1) / 2, i * 2 * M_PI / 360) << endl;
         }
     }
     else {
@@ -170,7 +170,7 @@ int main()
     if (outputFile.is_open()) {
         for (int i = 0; i <= 360; i++)
         {
-            outputFile << GoldenRatioMethod(((i + 20) * 2 * Pi / 360 - e * sin((i + 20) * 2 * Pi / 360) - i * 2 * Pi / 360) / ((eps - e * sin((i + 20) * 2 * Pi / 360 + eps) - e * sin((i + 20) * 2 * Pi / 360)) / eps), ((i + 20) * 2 * Pi / 360, i * 2 * Pi / 360)) << endl;
+            outputFile << GoldenRatioMethod(((i + 20) * 2 * M_PI / 360 - e * sin((i + 20) * 2 * M_PI / 360) - i * 2 * M_PI / 360) / ((eps - e * sin((i + 20) * 2 * M_PI / 360 + eps) - e * sin((i + 20) * 2 * M_PI / 360)) / eps), ((i + 20) * 2 * M_PI / 360, i * 2 * M_PI / 360)) << endl;
         }
     }
     else {
