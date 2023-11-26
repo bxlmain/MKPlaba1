@@ -10,11 +10,11 @@ const long double Pi = 3.14159265358;
 const double e = 0.8276646992;
 const double eps = 0.0001;
 
-double OrbitEccentricity(double E) {  
+double OrbitEccentricity(double E) {  //формула эксцентриситета орбиты
     return atan(sqrt((1 + e) / (1 - e)) * tan(E / 2)) * 2;
 }
 
-double IterationMethod(double Efut, double En, double M) {   
+double IterationMethod(double Efut, double En, double M) {  //метод итерации
     if (fabs(En - Efut) < eps)
     {
         cout << Efut << endl;
@@ -26,7 +26,7 @@ double IterationMethod(double Efut, double En, double M) {
     }
 }
 
-double HalfDivisionMethod(double a, double b, double M) {   
+double HalfDivisionMethod(double a, double b, double M) {   //метод половинного деления
     if (fabs(b - a) < 2 * eps * fabs(((a + b) / 2) - e * sin((a + b) / 2) - M) < eps)
     {
         return b + a / 2;
@@ -42,7 +42,7 @@ double HalfDivisionMethod(double a, double b, double M) {
 }
 
 
-double GoldenRatioMethod(double a, double b, double X, double M) {   
+double GoldenRatioMethod(double a, double b, double X, double M) {   //метод золотого сечения
     if (fabs(b - a) < 2 * eps * fabs(((a + b) / 2) - e * sin((a + b) / 2) - M) < eps)
     {
         return a + (b - a) / X;
@@ -58,7 +58,7 @@ double GoldenRatioMethod(double a, double b, double X, double M) {
 }
 
 
-double NTMethod(double dif, double E, double M) {
+double NTMethod(double dif, double E, double M) { //метод Ньютона
     if (dif < eps)
     {
         return E - dif;
@@ -196,8 +196,5 @@ int main()
     
     inputFile.close();
     outputFile.close();
-
-
-
     return 0;
 }
